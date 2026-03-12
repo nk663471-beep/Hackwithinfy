@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int dish_selection(int arr[],int n){
+    set<int> st;
+        for(int i = 0; i < n ; i++){
+            st.insert(arr[i]);
+        }
+        int max_cnt = -1;
+        int best_type = -1;
+        for(int curr : st){
+            int curr_cnt = 0;
+            int last_idx = -2;
+            for(int i = 0; i < n ; i++){
+                if(arr[i] == curr){
+                    if(i > last_idx +1){
+                        curr_cnt++;
+                        last_idx = i;
+                    }
+                }
+            }
+            if(curr_cnt > max_cnt){
+                max_cnt = curr_cnt;
+                best_type = curr;
+            }
+        }
+        return best_type;
+}
+
+int main() {
+    int arr[10] = {1,2,2,2,2,1,2,2,2,1};
+    int result = dish_selection(arr,10);
+    cout << result;
+
+    return 0;
+}
