@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        int n = s.size();
+        int length = 0;
+        unordered_map<char,int> cnt;
+        for(char ch : s){
+            cnt[ch]++;
+            if(cnt[ch] == 2){
+                length +=2;
+                cnt[ch] -= 2;
+            }
+
+        }
+        if(length == n)  return length;
+        else{
+            return length+1;
+        }
+        
+    }
+};
